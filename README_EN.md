@@ -97,3 +97,15 @@ The application automatically detects your system language or allows manual sele
 *   Initial Release.
 *   Basic Project CRUD (Create, Read, Update, Delete).
 *   Cyberpunk UI implementation.
+
+---
+
+## © Copyright & License
+
+**Copyright © 2024 PrimalFocus. All Rights Reserved.**
+
+This software is **Proprietary**.
+
+*   Unauthorized copying, modification, distribution, or use of this source code, design assets, and documentation, in whole or in part, is **strictly prohibited** without the explicit written permission of the author.
+*   This codebase is intended for personal study and reference only. It may not be used for the development of derivative works.
+*   The author reserves the right to pursue legal action against any unauthorized infringement.
