@@ -1,8 +1,23 @@
 
 # PrimalFocus (进化动力)
 
+<div align="center">
+  <p>
+    <strong>[ 🇺🇸 English ]</strong> &nbsp;|&nbsp; 
+    <strong>[ 🇨🇳 简体中文 ]</strong> &nbsp;|&nbsp; 
+    <strong>[ 🇯🇵 日本語 ]</strong> &nbsp;|&nbsp; 
+    <strong>[ 🇰🇷 한국어 ]</strong>
+  </p>
+</div>
+
 > **Current Version**: v1.6.0
-> **Tagline**: Evolve beyond procrastination. / 用进化心理学对抗拖延症。
+
+| Language | Tagline |
+| :--- | :--- |
+| **English** | Evolve beyond procrastination. |
+| **简体中文** | 用进化心理学对抗拖延症。 |
+| **日本語** | 進化心理学で先延ばしを克服。 |
+| **한국어** | 진화 심리학으로 미루기를 극복하세요. |
 
 PrimalFocus is a multi-language anti-procrastination tool based on evolutionary psychology. Instead of simple to-do lists, it uses AI to analyze your behavioral phenotype ("Archetype"), breaks down tasks into low-energy "micro-steps", and uses radical psychological strategies to transition you from a state of paralysis to execution.
 
@@ -35,7 +50,11 @@ PrimalFocus is a multi-language anti-procrastination tool based on evolutionary 
 *   **Archive System**: Review past victories and reactivate old missions.
 
 ### 5. 🌐 Multi-Language Support (多语言支持)
-*   English, 简体中文 (Simplified Chinese), 日本語 (Japanese), 한국어 (Korean).
+The application automatically detects your system language or allows manual selection on startup.
+*   **🇺🇸 English**
+*   **🇨🇳 Simplified Chinese (简体中文)**
+*   **🇯🇵 Japanese (日本語)**
+*   **🇰🇷 Korean (한국어)**
 
 ---
 
