@@ -102,7 +102,7 @@
 
 ## © 저작권 및 라이선스 (Copyright & License)
 
-**Copyright © 2024 PrimalFocus. All Rights Reserved.**
+**Copyright © 2026 PrimalFocus. All Rights Reserved.**
 
 이 소프트웨어는 **독점(Proprietary) 소프트웨어**입니다.
 

@@ -102,7 +102,7 @@
 
 ## © 版权声明 (License)
 
-**版权所有 © 2024 进化动力 (PrimalFocus)。保留所有权利。**
+**版权所有 © 2026 进化动力 (PrimalFocus)。保留所有权利。**
 
 本软件为**专有软件 (Proprietary Software)**。
 

@@ -102,7 +102,7 @@ The application automatically detects your system language or allows manual sele
 
 ## © Copyright & License
 
-**Copyright © 2024 PrimalFocus. All Rights Reserved.**
+**Copyright © 2026 PrimalFocus. All Rights Reserved.**
 
 This software is **Proprietary**.
 

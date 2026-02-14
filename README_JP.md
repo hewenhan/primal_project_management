@@ -102,7 +102,7 @@
 
 ## © 著作権およびライセンス (Copyright & License)
 
-**Copyright © 2024 PrimalFocus. All Rights Reserved.**
+**Copyright © 2026 PrimalFocus. All Rights Reserved.**
 
 本ソフトウェアは**プロプライエタリ（独占的）ソフトウェア**です。
 
