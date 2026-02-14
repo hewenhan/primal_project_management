@@ -46,9 +46,20 @@ export interface Project {
   status: 'planning' | 'active' | 'completed';
 }
 
+export interface TutorialState {
+  assessment: boolean;
+  dashboard: boolean;
+  planning: boolean;
+  execution: boolean;
+}
+
 export interface UserData {
   profile: PsychologicalProfile | null;
   projects: Project[];
+  language: Language;
+  // New fields for Onboarding
+  hasSelectedLanguage: boolean;
+  tutorial: TutorialState;
 }
 
 export interface AssessmentQuestion {

@@ -10,9 +10,22 @@ import { TRANSLATIONS, APP_VERSION } from './constants';
 import { Brain, Layers, Download } from 'lucide-react';
 import { ModalProvider } from './components/ConfirmModal';
 import { ProfileModal } from './components/ProfileModal';
+import { LanguageSetup } from './components/LanguageSetup';
 
 const AppContent: React.FC = () => {
-  const [userData, setUserData] = useState<UserData>({ profile: null, projects: [] });
+  const [userData, setUserData] = useState<UserData>({ 
+    profile: null, 
+    projects: [], 
+    language: 'en',
+    hasSelectedLanguage: false,
+    tutorial: {
+        assessment: false,
+        dashboard: false,
+        planning: false,
+        execution: false
+    }
+  });
+  
   const [state, setState] = useState<AppState>(AppState.DASHBOARD);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [language, setLanguage] = useState<Language>('en');
@@ -22,17 +35,17 @@ const AppContent: React.FC = () => {
   useEffect(() => {
     const data = loadData();
     setUserData(data);
-    // If no profile, force assessment
-    if (!data.profile) {
+    setLanguage(data.language);
+    // If no profile, force assessment (but only after language setup if needed)
+    if (data.hasSelectedLanguage && !data.profile) {
       setState(AppState.ASSESSMENT);
     }
   }, []);
 
   // Save data on change
   useEffect(() => {
-    if (userData.profile) { // Only save if initialized
-        saveData(userData);
-    }
+    // We save even if profile is null, to persist language selection
+    saveData(userData);
   }, [userData]);
 
   // Global Keyboard Shortcuts
@@ -73,7 +86,6 @@ const AppContent: React.FC = () => {
   };
 
   const handleDeleteProject = (id: string) => {
-      // Confirmation handled in ProjectList via Modal now, this just updates state
       setUserData(prev => ({
           ...prev,
           projects: prev.projects.filter(p => p.id !== id)
@@ -82,17 +94,57 @@ const AppContent: React.FC = () => {
 
   const handleImport = (data: UserData) => {
       setUserData(data);
+      setLanguage(data.language);
       if(!data.profile) setState(AppState.ASSESSMENT);
       else setState(AppState.DASHBOARD);
   };
 
   const handleReset = () => {
     clearData();
-    setUserData({ profile: null, projects: [] });
-    setState(AppState.ASSESSMENT);
+    const newData = loadData(); 
+    // Force reset to unchecked language state so they see onboarding again
+    newData.hasSelectedLanguage = false; 
+    setUserData(newData);
+    setLanguage(newData.language);
+    setState(AppState.DASHBOARD); 
+  };
+
+  const handleLanguageChange = (lang: Language) => {
+      setLanguage(lang);
+      setUserData(prev => ({ ...prev, language: lang }));
+  };
+
+  const handleInitialLanguageConfirm = () => {
+      setUserData(prev => ({ ...prev, hasSelectedLanguage: true }));
+      // If no profile, go to assessment
+      if (!userData.profile) {
+          setState(AppState.ASSESSMENT);
+      }
+  };
+
+  // Generic tutorial completion handler
+  const handleTutorialComplete = (key: keyof typeof userData.tutorial) => {
+      setUserData(prev => ({
+          ...prev,
+          tutorial: {
+              ...prev.tutorial,
+              [key]: true
+          }
+      }));
   };
 
   const t = TRANSLATIONS[language];
+
+  // 1. Language Setup Modal (Top priority)
+  if (!userData.hasSelectedLanguage) {
+      return (
+          <LanguageSetup 
+            currentLanguage={language} 
+            onLanguageChange={handleLanguageChange}
+            onConfirm={handleInitialLanguageConfirm}
+          />
+      );
+  }
 
   return (
     <div className="min-h-screen bg-background text-gray-200 font-sans selection:bg-primary selection:text-black flex flex-col">
@@ -113,11 +165,16 @@ const AppContent: React.FC = () => {
           </div>
           
           <div className="flex items-center gap-4 md:gap-6">
-            {/* Shortcut Hint */}
-            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/30 rounded text-xs font-bold text-primary animate-pulse cursor-help" title="Press Ctrl+S (or Cmd+S) anywhere to save">
+            {/* Shortcut Hint / Backup Button */}
+            <button 
+                id="header-backup-btn"
+                onClick={() => exportData(userData)}
+                className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/50 hover:bg-primary/20 rounded text-xs font-bold text-primary transition-colors cursor-pointer" 
+                title="Click to Backup (or Ctrl+S)"
+            >
                 <span className="font-mono">CTRL + S</span>
-                <span className="opacity-70 tracking-widest">{t.saveShortcut}</span>
-            </div>
+                <span className="opacity-90 tracking-widest">{t.saveShortcut}</span>
+            </button>
 
             {userData.profile && (
               <button 
@@ -131,18 +188,20 @@ const AppContent: React.FC = () => {
                 </span>
               </button>
             )}
-            <LanguageSelector current={language} onChange={setLanguage} />
+            <LanguageSelector current={language} onChange={handleLanguageChange} />
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full relative">
         {state === AppState.ASSESSMENT && (
           <Assessment 
             language={language} 
             onComplete={handleAssessmentComplete} 
             onImport={handleImport} 
+            tutorialActive={!userData.tutorial.assessment}
+            onTutorialComplete={() => handleTutorialComplete('assessment')}
           />
         )}
 
@@ -157,6 +216,8 @@ const AppContent: React.FC = () => {
             onProjectAdd={handleAddProject}
             onDelete={handleDeleteProject}
             onReset={handleReset}
+            tutorialActive={!userData.tutorial.dashboard && !!userData.profile} // Only show dashboard tutorial if profile exists
+            onTutorialComplete={() => handleTutorialComplete('dashboard')}
           />
         )}
 
@@ -166,6 +227,8 @@ const AppContent: React.FC = () => {
             language={language} 
             onProjectCreated={handleCreateProject}
             onCancel={() => setState(AppState.DASHBOARD)}
+            tutorialActive={!userData.tutorial.planning}
+            onTutorialComplete={() => handleTutorialComplete('planning')}
           />
         )}
 
@@ -176,6 +239,8 @@ const AppContent: React.FC = () => {
             language={language}
             onUpdateProject={handleUpdateProject}
             onBack={() => setState(AppState.DASHBOARD)}
+            tutorialActive={!userData.tutorial.execution}
+            onTutorialComplete={() => handleTutorialComplete('execution')}
           />
         )}
       </main>

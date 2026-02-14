@@ -4,6 +4,7 @@ import { TRANSLATIONS } from '../constants';
 import { Plus, Upload, Download, Trash2, ArrowRight, FileJson, MoreVertical, X, CheckCircle2, FileSearch, RotateCcw } from 'lucide-react';
 import { importData, exportData, exportProject, importProject } from '../services/storageService';
 import { useModal } from './ConfirmModal';
+import { TutorialOverlay, TutorialStep } from './TutorialOverlay';
 
 interface Props {
   projects: Project[];
@@ -15,9 +16,11 @@ interface Props {
   onProjectAdd: (p: Project) => void;
   onDelete: (id: string) => void;
   onReset?: () => void;
+  tutorialActive?: boolean;
+  onTutorialComplete?: () => void;
 }
 
-export const ProjectList: React.FC<Props> = ({ projects, userData, language, onSelect, onCreate, onImport, onProjectAdd, onDelete, onReset }) => {
+export const ProjectList: React.FC<Props> = ({ projects, userData, language, onSelect, onCreate, onImport, onProjectAdd, onDelete, onReset, tutorialActive, onTutorialComplete }) => {
   const t = TRANSLATIONS[language];
   const { confirm, alert } = useModal();
   const globalFileInputRef = useRef<HTMLInputElement>(null);
@@ -88,9 +91,25 @@ export const ProjectList: React.FC<Props> = ({ projects, userData, language, onS
       }
   };
 
+  const tutorialSteps: TutorialStep[] = [
+      { targetId: 'mission-control-header', titleKey: 'tutDashboardTitle', descKey: 'tutDashboardDesc' },
+      { targetId: 'new-mission-btn', titleKey: 'tutNewProjectTitle', descKey: 'tutNewProjectDesc' }
+  ];
+
   return (
     <div className="space-y-6 min-h-[500px] pb-10">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+      
+      {/* Tutorial */}
+      {tutorialActive && onTutorialComplete && (
+          <TutorialOverlay 
+            steps={tutorialSteps} 
+            language={language} 
+            onComplete={onTutorialComplete} 
+            isActive={tutorialActive} 
+          />
+      )}
+
+      <div id="mission-control-header" className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <h2 className="text-3xl font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
           {t.missionControl || "Mission Control"}
         </h2>
@@ -154,6 +173,7 @@ export const ProjectList: React.FC<Props> = ({ projects, userData, language, onS
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Create Button */}
         <button
+            id="new-mission-btn"
             onClick={onCreate}
             className="w-full h-[240px] border-2 border-dashed border-gray-800 rounded-lg hover:border-primary hover:bg-primary/5 group transition-all flex flex-col items-center justify-center gap-2"
         >
@@ -203,7 +223,7 @@ export const ProjectList: React.FC<Props> = ({ projects, userData, language, onS
                         onClick={() => onSelect(p)}
                         className={`w-full flex items-center justify-center gap-2 py-3 font-bold uppercase tracking-wider text-xs rounded transition-all ${
                             isCompleted
-                                ? 'bg-success/10 text-success hover:bg-success hover:text-black border border-success/30'
+                                ? 'bg-transparent border border-success text-success hover:bg-success hover:text-black'
                                 : 'bg-gray-900 hover:bg-primary hover:text-black text-gray-400'
                         }`}
                     >

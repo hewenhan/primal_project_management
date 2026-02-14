@@ -4,15 +4,18 @@ import { generateMissionPlan } from '../services/geminiService';
 import { TRANSLATIONS } from '../constants';
 import { Loader2, Zap, Target, RefreshCw } from 'lucide-react';
 import { useModal } from './ConfirmModal';
+import { TutorialOverlay, TutorialStep } from './TutorialOverlay';
 
 interface Props {
   userData: UserData;
   language: Language;
   onProjectCreated: (p: Project) => void;
   onCancel: () => void;
+  tutorialActive?: boolean;
+  onTutorialComplete?: () => void;
 }
 
-export const Planning: React.FC<Props> = ({ userData, language, onProjectCreated, onCancel }) => {
+export const Planning: React.FC<Props> = ({ userData, language, onProjectCreated, onCancel, tutorialActive, onTutorialComplete }) => {
   const [description, setDescription] = useState('');
   const [projectName, setProjectName] = useState('');
   const [loading, setLoading] = useState(false);
@@ -44,11 +47,26 @@ export const Planning: React.FC<Props> = ({ userData, language, onProjectCreated
     }
   };
 
+  const tutorialSteps: TutorialStep[] = [
+      { targetId: 'planning-form', titleKey: 'tutPlanningTitle', descKey: 'tutPlanningDesc' }
+  ];
+
   return (
     <div className="max-w-3xl mx-auto space-y-6">
+      
+      {/* Tutorial */}
+      {tutorialActive && onTutorialComplete && (
+          <TutorialOverlay 
+            steps={tutorialSteps} 
+            language={language} 
+            onComplete={onTutorialComplete} 
+            isActive={tutorialActive} 
+          />
+      )}
+
       <button onClick={onCancel} className="text-gray-500 hover:text-white mb-4">&larr; {t.back}</button>
       
-      <div className="bg-surface border border-gray-800 p-8 rounded-xl shadow-lg">
+      <div id="planning-form" className="bg-surface border border-gray-800 p-8 rounded-xl shadow-lg">
         <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
             <Target className="text-primary" />
             {t.newProject}

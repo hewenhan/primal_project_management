@@ -6,6 +6,7 @@ import { CheckCircle2, Circle, Clock, ArrowLeft, Play, Pause, Trophy, Settings2,
 import { useModal } from './ConfirmModal';
 import { LogModal } from './LogModal';
 import { MissionComplete } from './MissionComplete';
+import { TutorialOverlay, TutorialStep } from './TutorialOverlay';
 
 interface Props {
   project: Project;
@@ -13,6 +14,8 @@ interface Props {
   language: Language;
   onUpdateProject: (p: Project) => void;
   onBack: () => void;
+  tutorialActive?: boolean;
+  onTutorialComplete?: () => void;
 }
 
 // Simple internal hook for audio to avoid creating new file
@@ -139,7 +142,7 @@ const useAudioEngine = () => {
     return { playBeep, playBackground, stopBackground, soundType, isPlaying };
 };
 
-export const Execution: React.FC<Props> = ({ project, userData, language, onUpdateProject, onBack }) => {
+export const Execution: React.FC<Props> = ({ project, userData, language, onUpdateProject, onBack, tutorialActive, onTutorialComplete }) => {
   const t = TRANSLATIONS[language];
   const { confirm, alert } = useModal();
   const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
@@ -386,10 +389,26 @@ export const Execution: React.FC<Props> = ({ project, userData, language, onUpda
   const progress = (project.tasks.filter(t => t.completed).length / project.tasks.length) * 100;
   const allTasksDone = project.tasks.length > 0 && project.tasks.every(t => t.completed);
 
+  const tutorialSteps: TutorialStep[] = [
+      { targetId: 'execution-zone', titleKey: 'tutExecutionTitle', descKey: 'tutExecutionDesc' },
+      { targetId: 'panic-btn', titleKey: 'tutPanicTitle', descKey: 'tutPanicDesc' }
+  ];
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto lg:h-[calc(100vh-100px)] pb-10">
+      
+      {/* Tutorial */}
+      {tutorialActive && onTutorialComplete && (
+          <TutorialOverlay 
+            steps={tutorialSteps} 
+            language={language} 
+            onComplete={onTutorialComplete} 
+            isActive={tutorialActive} 
+          />
+      )}
+
       {/* Left Column: Task List or Editor */}
-      <div className={`lg:col-span-2 bg-surface border ${isArchived ? 'border-success/30' : 'border-gray-800'} rounded-lg p-6 flex flex-col relative transition-colors duration-500 overflow-visible lg:overflow-hidden min-h-[400px]`}>
+      <div id="execution-zone" className={`lg:col-span-2 bg-surface border ${isArchived ? 'border-success/30' : 'border-gray-800'} rounded-lg p-6 flex flex-col relative transition-colors duration-500 overflow-visible lg:overflow-hidden min-h-[400px]`}>
         
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
@@ -646,6 +665,7 @@ export const Execution: React.FC<Props> = ({ project, userData, language, onUpda
                         
                         {/* Panic Button */}
                         <button 
+                            id="panic-btn"
                             onClick={handlePanic}
                             disabled={panicLoading}
                             className="p-4 rounded-full bg-danger/10 border border-danger/50 text-danger hover:bg-danger hover:text-white transition-all group relative"

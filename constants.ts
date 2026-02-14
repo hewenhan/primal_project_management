@@ -1,6 +1,7 @@
+
 import { Language, AssessmentQuestion } from './types';
 
-export const APP_VERSION = "v1.5.1";
+export const APP_VERSION = "v1.6.0";
 
 export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   en: {
@@ -72,13 +73,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     reactivate: "Reactivate / Unlock",
     missionLocked: "Mission is archived. Unlock to edit.",
     reactivateConfirm: "Reactivate this mission? Status will return to active.",
-    // New
     saveShortcut: "BACKUP",
     importSkip: "Skip assessment by importing config",
     uploadConfig: "Upload Config JSON",
     resetApp: "System Purge",
     resetWarning: "WARNING: This will wipe all profile data and missions. This action is irreversible. Continue?",
-    // Audio & Panic
     panicButton: "I'M STUCK / PANIC",
     panicAnalyzing: "Deconstructing Obstacle...",
     panicSuccess: "Task decomposed into micro-steps.",
@@ -87,7 +86,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     soundPink: "Pink Noise (Rain)",
     soundBinaural: "Binaural Focus (40Hz)",
     ambienceLabel: "Neural Ambience",
-    // Missing Translations
     codenameLabel: "Codename",
     objectiveIntelLabel: "Objective Intel",
     aiAssistantTitle: "AI Assistant",
@@ -108,6 +106,25 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     regenFailed: "Failed to regenerate plan.",
     connectionFailed: "Failed to contact the neural network.",
     missionControl: "Mission Control",
+    // Tutorial & Setup
+    welcomeTitle: "Initialize PrimalFocus",
+    selectLanguage: "Select Interface Language",
+    getStarted: "INITIALIZE SYSTEM",
+    tutNext: "NEXT",
+    tutSkip: "SKIP",
+    tutFinish: "FINISH",
+    tutDashboardTitle: "Mission Control",
+    tutDashboardDesc: "This is your HQ. Create new missions here or manage existing ones. Don't let the list grow too long.",
+    tutNewProjectTitle: "New Mission",
+    tutNewProjectDesc: "Click here to start. The AI will handle the heavy lifting of planning.",
+    tutAssessmentTitle: "Psych Profile",
+    tutAssessmentDesc: "Before we start, we need to understand your procrastination style. This is a one-time analysis.",
+    tutPlanningTitle: "Tactical Planning",
+    tutPlanningDesc: "Just dump your brain here. Vague is fine. The AI interprets 'do the thing' into actionable steps.",
+    tutExecutionTitle: "Execution Mode",
+    tutExecutionDesc: "This is where work happens. Single task focus. No distractions.",
+    tutPanicTitle: "Panic Button",
+    tutPanicDesc: "If you get stuck or anxious, hit this. The AI will break the current task into tiny, laughable micro-steps to get you moving.",
   },
   zh: {
     appTitle: "进化动力",
@@ -178,13 +195,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     reactivate: "重启 / 解锁任务",
     missionLocked: "任务已归档锁定。需解锁以编辑。",
     reactivateConfirm: "确认重启任务？状态将变更为“进行中”。",
-    // New
     saveShortcut: "全局保存",
     importSkip: "已有配置？导入以跳过测试",
     uploadConfig: "上传配置 JSON",
     resetApp: "系统重置",
     resetWarning: "警告：这将清除所有侧写数据和任务记录。此操作不可逆。是否继续？",
-    // Audio & Panic
     panicButton: "卡住了 / 紧急求助",
     panicAnalyzing: "正在拆解障碍...",
     panicSuccess: "任务已拆解为微步骤。",
@@ -193,7 +208,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     soundPink: "粉红噪音 (雨声)",
     soundBinaural: "双耳节拍 (专注)",
     ambienceLabel: "环境音效",
-    // Missing Translations
     codenameLabel: "任务代号",
     objectiveIntelLabel: "目标情报",
     aiAssistantTitle: "AI 战术助手",
@@ -214,6 +228,25 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     regenFailed: "生成计划失败。",
     connectionFailed: "无法连接神经元网络。",
     missionControl: "任务控制中心",
+    // Tutorial & Setup
+    welcomeTitle: "初始化进化动力系统",
+    selectLanguage: "选择界面语言",
+    getStarted: "初始化系统",
+    tutNext: "下一步",
+    tutSkip: "跳过",
+    tutFinish: "完成",
+    tutDashboardTitle: "任务控制中心",
+    tutDashboardDesc: "这是你的指挥部。在这里创建新任务或管理现有任务。",
+    tutNewProjectTitle: "新建任务",
+    tutNewProjectDesc: "点击这里开始。AI 会帮你搞定最难的“计划”部分。",
+    tutAssessmentTitle: "心理侧写",
+    tutAssessmentDesc: "在开始之前，系统需要分析你的拖延症类型。这是建立档案的必经之路。",
+    tutPlanningTitle: "战术规划",
+    tutPlanningDesc: "把你脑子里模糊的想法倒在这里。AI 会负责把它翻译成你杏仁核能接受的指令。",
+    tutExecutionTitle: "执行模式",
+    tutExecutionDesc: "这里是战场。一次只专注一个任务，隔绝所有干扰。",
+    tutPanicTitle: "紧急求助按钮",
+    tutPanicDesc: "如果你卡住了、焦虑了、想刷手机了，点这个。AI 会立刻介入，把任务切得碎到让你无法拒绝。",
   },
   ja: {
     appTitle: "プライマル・フォーカス",
@@ -284,13 +317,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     reactivate: "再開 / ロック解除",
     missionLocked: "アーカイブ済みです。編集するにはロックを解除してください。",
     reactivateConfirm: "ミッションを再開しますか？ステータスはアクティブに戻ります。",
-    // New
     saveShortcut: "保存",
     importSkip: "設定をインポートしてスキップ",
     uploadConfig: "設定JSONをアップロード",
     resetApp: "システム初期化",
     resetWarning: "警告：すべてのプロファイルデータとミッションが消去されます。この操作は元に戻せません。続けますか？",
-    // Audio & Panic
     panicButton: "パニック / 行き詰まり",
     panicAnalyzing: "障害を分解中...",
     panicSuccess: "タスクをマイクロステップに分解しました。",
@@ -299,7 +330,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     soundPink: "ピンクノイズ (雨音)",
     soundBinaural: "バイノーラル (集中)",
     ambienceLabel: "環境音",
-    // Missing Translations
     codenameLabel: "コードネーム",
     objectiveIntelLabel: "目標情報",
     aiAssistantTitle: "AI戦術アシスタント",
@@ -320,6 +350,25 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     regenFailed: "計画の再生成に失敗しました。",
     connectionFailed: "ニューラルネットワークへの接続に失敗しました。",
     missionControl: "ミッションコントロール",
+    // Tutorial
+    welcomeTitle: "システム初期化",
+    selectLanguage: "言語を選択してください",
+    getStarted: "システム起動",
+    tutNext: "次へ",
+    tutSkip: "スキップ",
+    tutFinish: "完了",
+    tutDashboardTitle: "ミッションコントロール",
+    tutDashboardDesc: "ここは司令部です。新しいミッションを作成したり、既存のミッションを管理します。",
+    tutNewProjectTitle: "新規ミッション",
+    tutNewProjectDesc: "ここをクリックして開始します。AIが計画の重労働を担当します。",
+    tutAssessmentTitle: "心理プロファイル",
+    tutAssessmentDesc: "開始する前に、あなたの「先延ばしタイプ」を分析する必要があります。これは一度だけのプロセスです。",
+    tutPlanningTitle: "戦術計画",
+    tutPlanningDesc: "頭の中の曖昧な考えをここに書き出してください。AIがそれを実行可能なステップに翻訳します。",
+    tutExecutionTitle: "実行モード",
+    tutExecutionDesc: "ここは戦場です。一つのタスクに集中し、すべての邪魔を排除します。",
+    tutPanicTitle: "パニックボタン",
+    tutPanicDesc: "行き詰まったり、不安になったりしたら、これを押してください。AIがタスクを瞬時に分解し、救出します。",
   },
   ko: {
     appTitle: "프라이멀 포커스",
@@ -390,13 +439,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     reactivate: "재활성화 / 잠금 해제",
     missionLocked: "임무가 보관되었습니다. 편집하려면 잠금을 해제하세요.",
     reactivateConfirm: "임무를 재활성화하시겠습니까? 상태가 활성으로 돌아갑니다.",
-    // New
     saveShortcut: "백업",
     importSkip: "설정 가져오기로 건너뛰기",
     uploadConfig: "설정 JSON 업로드",
     resetApp: "시스템 초기화",
     resetWarning: "경고: 모든 프로필 데이터와 임무가 삭제됩니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?",
-    // Audio & Panic
     panicButton: "패닉 / 긴급 지원",
     panicAnalyzing: "장애물 분해 중...",
     panicSuccess: "작업이 마이크로 단계로 분해되었습니다.",
@@ -405,7 +452,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     soundPink: "핑크 노이즈 (빗소리)",
     soundBinaural: "바이노럴 (집중)",
     ambienceLabel: "배경음",
-    // Missing Translations
     codenameLabel: "코드네임",
     objectiveIntelLabel: "목표 정보",
     aiAssistantTitle: "AI 전술 어시스턴트",
@@ -426,9 +472,29 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     regenFailed: "계획을 재생성하지 못했습니다.",
     connectionFailed: "신경망에 연결하지 못했습니다.",
     missionControl: "임무 통제 센터",
+    // Tutorial
+    welcomeTitle: "시스템 초기화",
+    selectLanguage: "언어 선택",
+    getStarted: "시스템 시작",
+    tutNext: "다음",
+    tutSkip: "건너뛰기",
+    tutFinish: "완료",
+    tutDashboardTitle: "임무 통제실",
+    tutDashboardDesc: "이곳은 본부입니다. 새 임무를 생성하거나 관리하세요.",
+    tutNewProjectTitle: "새 임무",
+    tutNewProjectDesc: "여기를 클릭하여 시작하세요. 계획 수립의 어려운 부분은 AI가 처리합니다.",
+    tutAssessmentTitle: "심리 프로필",
+    tutAssessmentDesc: "시작하기 전에, 시스템이 귀하의 미루기 유형을 분석해야 합니다. 이 과정은 한 번만 수행됩니다.",
+    tutPlanningTitle: "전술 계획",
+    tutPlanningDesc: "머릿속의 모호한 생각을 여기에 쏟아내세요. AI가 실행 가능한 단계로 변환해 줍니다.",
+    tutExecutionTitle: "실행 모드",
+    tutExecutionDesc: "여기는 전장입니다. 한 번에 하나의 임무에만 집중하세요.",
+    tutPanicTitle: "패닉 버튼",
+    tutPanicDesc: "막히거나 불안할 때 누르세요. AI가 작업을 아주 작게 쪼개어 구출해 줍니다.",
   },
 };
 
+// ... existing ASSESSMENT_QUESTIONS ...
 export const ASSESSMENT_QUESTIONS: AssessmentQuestion[] = [
   // ... existing questions ...
   // (Keeping existing questions to save space in XML, but implying they are here)

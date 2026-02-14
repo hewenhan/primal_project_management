@@ -1,19 +1,54 @@
-import { UserData, Project } from '../types';
+import { UserData, Project, Language } from '../types';
 
 const STORAGE_KEY = 'primal_focus_data';
 
+const getSystemLanguage = (): Language => {
+    if (typeof navigator === 'undefined') return 'en';
+    const lang = navigator.language.toLowerCase();
+    if (lang.startsWith('zh')) return 'zh';
+    if (lang.startsWith('ja')) return 'ja';
+    if (lang.startsWith('ko')) return 'ko';
+    return 'en';
+};
+
 export const loadData = (): UserData => {
   const raw = localStorage.getItem(STORAGE_KEY);
+  const systemLang = getSystemLanguage();
+  
   if (raw) {
     try {
-        return JSON.parse(raw);
+        const parsed = JSON.parse(raw);
+        // Migration logic for existing users
+        return {
+            ...parsed,
+            language: parsed.language || systemLang,
+            // If they have existing data, assume they selected language implicitly to avoid nagging old users too much, 
+            // OR enforce it. Let's enforce it only if strictly new fields missing.
+            hasSelectedLanguage: parsed.hasSelectedLanguage ?? (parsed.profile !== null), 
+            tutorial: parsed.tutorial || {
+                assessment: false,
+                dashboard: false,
+                planning: false,
+                execution: false,
+            }
+        };
     } catch(e) {
         console.error("Failed to parse storage", e);
     }
   }
+  
+  // New User Defaults
   return {
     profile: null,
     projects: [],
+    language: systemLang,
+    hasSelectedLanguage: false,
+    tutorial: {
+        assessment: false,
+        dashboard: false,
+        planning: false,
+        execution: false,
+    }
   };
 };
 
@@ -45,6 +80,10 @@ export const importData = async (file: File): Promise<UserData> => {
         const json = JSON.parse(event.target?.result as string);
         // Basic validation
         if (json.projects && Array.isArray(json.projects)) {
+            // Apply defaults if missing
+            if (!json.language) json.language = getSystemLanguage();
+            if (json.hasSelectedLanguage === undefined) json.hasSelectedLanguage = true; // Imported data assumes setup done
+            if (!json.tutorial) json.tutorial = { assessment: true, dashboard: true, planning: true, execution: true }; // Skip tutorials for imports
             resolve(json);
         } else {
             reject(new Error("Invalid JSON format"));
