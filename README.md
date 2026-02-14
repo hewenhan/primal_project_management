@@ -1,105 +1,99 @@
 
-# PrimalFocus (进化动力)
+# 进化动力 (PrimalFocus)
 
 <div align="center">
   <p>
-    <strong>[ 🇺🇸 English ]</strong> &nbsp;|&nbsp; 
     <strong>[ 🇨🇳 简体中文 ]</strong> &nbsp;|&nbsp; 
-    <strong>[ 🇯🇵 日本語 ]</strong> &nbsp;|&nbsp; 
-    <strong>[ 🇰🇷 한국어 ]</strong>
+    <a href="README_EN.md"><strong>[ 🇺🇸 English ]</strong></a> &nbsp;|&nbsp; 
+    <a href="README_JP.md"><strong>[ 🇯🇵 日本語 ]</strong></a> &nbsp;|&nbsp; 
+    <a href="README_KR.md"><strong>[ 🇰🇷 한국어 ]</strong></a>
   </p>
 </div>
 
-> **Current Version**: v1.6.0
+> **当前版本**: v1.6.0
+> **口号**: 用进化心理学对抗拖延症。
 
-| Language | Tagline |
-| :--- | :--- |
-| **English** | Evolve beyond procrastination. |
-| **简体中文** | 用进化心理学对抗拖延症。 |
-| **日本語** | 進化心理学で先延ばしを克服。 |
-| **한국어** | 진화 심리학으로 미루기를 극복하세요. |
-
-PrimalFocus is a multi-language anti-procrastination tool based on evolutionary psychology. Instead of simple to-do lists, it uses AI to analyze your behavioral phenotype ("Archetype"), breaks down tasks into low-energy "micro-steps", and uses radical psychological strategies to transition you from a state of paralysis to execution.
+**进化动力 (PrimalFocus)** 是一款基于进化心理学的多语言抗拖延工具。它不仅仅是一个简单的待办事项列表，而是利用 AI 分析你的行为表型（“原型”），将任务分解为低能耗的“微步骤”，并使用激进的心理策略帮助你从瘫痪状态过渡到执行状态。
 
 ---
 
-## ✨ Key Features (功能亮点)
+## ✨ 功能亮点 (Key Features)
 
-### 1. 🧬 Psychological Profiling (心理侧写)
-*   **30-Point Behavioral Analysis**: Determines your procrastination style (e.g., Perfectionist, Rebel, low-energy).
-*   **AI-Generated Report**: Generates a detailed profile including your "Core Fear", strengths, weaknesses, and recommended psychological protocols.
-*   **Archetype System**: Assigns you a primal archetype (e.g., "The Perfectionist Hunter").
+### 1. 🧬 心理侧写 (Psychological Profiling)
+*   **30点行为分析**：通过问卷确定你的拖延风格（如完美主义者、叛逆者、低能量者）。
+*   **AI 生成报告**：生成详细的心理档案，包括你的“核心恐惧”、战斗优势、弱点和推荐的心理协议。
+*   **原型系统**：为你分配一个原本能原型（例如：“完美主义猎人”）。
 
-### 2. 🧠 AI Tactical Planning (AI 战术规划)
-*   **Vague to Actionable**: Turn abstract goals (e.g., "Write thesis") into concrete, non-threatening micro-tasks.
-*   **Strategy Injection**: The AI assigns a specific psychological "Strategy" (e.g., "Trash Draft Protocol") to lower the barrier to entry.
-*   **Mission Refinement**: Ability to "Edit/Refine" active missions by feeding new context to the AI (e.g., "I'm feeling overwhelmed") to recalibrate the plan.
+### 2. 🧠 AI 战术规划 (AI Tactical Planning)
+*   **从模糊到具体**：将抽象的大目标（如“写毕业论文”）瞬间转化为具体的、无威胁的微任务。
+*   **策略注入**：AI 会根据你的侧写分配特定的心理“策略”（如“垃圾草稿协议”）以降低开始的门槛。
+*   **任务精炼**：支持对进行中的任务进行“补充情报/调整”。你可以告诉 AI “我感到不知所措”或“情况有变”，AI 会重新校准剩余的计划。
 
-### 3. ⚔️ Execution Mode (执行模式)
-*   **Focus Timer**: Distraction-free interface for single-tasking.
-*   **Panic Button (SOS)**: If you get stuck, hit the Panic Button. The AI instantly decomposes the current task into 3 laughable micro-steps to break the paralysis.
-*   **Neural Ambience**: Integrated audio engine featuring:
-    *   White Noise
-    *   Pink Noise (Rain)
-    *   Binaural Beats (40Hz Gamma for focus)
+### 3. ⚔️ 执行模式 (Execution Mode)
+*   **专注计时器**：无干扰的单任务沉浸界面。
+*   **紧急按钮 (Panic Button / SOS)**：如果你卡住了或感到焦虑，点击紧急按钮。AI 会立即将当前任务分解为 3 个荒谬简单的微步骤（如“打开文档并盯着看1分钟”），以打破行动瘫痪。
+*   **神经环境音 (Neural Ambience)**：集成音频引擎，提供：
+    *   白噪音 (White Noise)
+    *   粉红噪音/雨声 (Pink Noise)
+    *   双耳节拍 (40Hz Gamma 专注波)
 
-### 4. 🛡️ Mission Control (任务控制)
-*   **Data Sovereignty**: All data is stored locally in your browser (`localStorage`).
-*   **Backup System**: Full JSON Import/Export capabilities for data migration or backup.
-*   **Gamification**: "Mission Complete" ceremonies to saturate dopamine receptors upon success.
-*   **Archive System**: Review past victories and reactivate old missions.
+### 4. 🛡️ 任务控制 (Mission Control)
+*   **数据主权**：所有数据均存储在您的浏览器本地 (`localStorage`)，保护隐私。
+*   **备份系统**：支持完整的 JSON 导入/导出功能，用于数据迁移或备份。
+*   **游戏化结算**：任务完成时的视觉仪式感，旨在让多巴胺受体饱和。
+*   **归档系统**：回顾过去的胜利，并支持重新激活已归档的旧任务。
 
-### 5. 🌐 Multi-Language Support (多语言支持)
-The application automatically detects your system language or allows manual selection on startup.
-*   **🇺🇸 English**
-*   **🇨🇳 Simplified Chinese (简体中文)**
-*   **🇯🇵 Japanese (日本語)**
-*   **🇰🇷 Korean (한국어)**
+### 5. 🌐 多语言支持 (Multi-Language Support)
+应用会自动检测系统语言，也支持手动切换。
+*   **🇺🇸 English** (英语)
+*   **🇨🇳 简体中文**
+*   **🇯🇵 日本語** (日语)
+*   **🇰🇷 한국어** (韩语)
 
 ---
 
-## 🛠 Tech Stack
+## 🛠 技术栈 (Tech Stack)
 
-*   **Frontend**: React 18, TypeScript, Vite
-*   **Styling**: Tailwind CSS (Cyberpunk/Dark Mode Theme)
+*   **前端**: React 18, TypeScript, Vite
+*   **样式**: Tailwind CSS (赛博朋克/暗黑模式主题)
 *   **AI**: Google Gemini API (`gemini-3-flash-preview`)
-*   **Icons**: Lucide React
-*   **State/Storage**: React Hooks + LocalStorage
+*   **图标**: Lucide React
+*   **状态/存储**: React Hooks + LocalStorage
 
 ---
 
-## 📅 Changelog (更新日志)
+## 📅 更新日志 (Changelog)
 
 ### v1.6.0 (Current)
-*   **New**: **Onboarding System**. Added a "Spotlight" tutorial overlay to guide users through the Assessment, Dashboard, Planning, and Execution views.
-*   **New**: **Language Setup**. Dedicated language selection modal for first-time users.
-*   **Fix**: **Assessment Stability**. Added input locking to prevent "skipping" questions when typing fast or double-clicking, fixing index out-of-bounds errors.
-*   **Fix**: **Tutorial Positioning**. Improved the overlay positioning logic to prevent tooltips from flying off-screen on mobile or small windows.
-*   **Fix**: Resolved React hydration errors (`Minified React error #300`) caused by conditional hook execution.
+*   **新增**: **新手引导系统 (Onboarding System)**。添加了“聚光灯”式的分步教程，引导用户熟悉心理评估、仪表盘、战术规划和执行视图。
+*   **新增**: **语言设置向导**。为首次使用的用户增加了专用的全屏语言选择界面。
+*   **修复**: **评估问卷稳定性**。添加了输入锁定机制，防止在快速点击或双击选项时发生“跳题”或索引越界错误。
+*   **修复**: **教程定位问题**。改进了引导气泡的定位算法，防止在移动端或小窗口下提示框飞出屏幕边缘。
+*   **修复**: 解决了因条件 Hook 执行导致的 React 水合错误 (`Minified React error #300`)。
 
 ### v1.5.0
-*   **Feature**: **Panic Button**. Added an emergency button in Execution Mode. Uses AI to break down the active task if the user is stuck.
-*   **Feature**: **Audio Engine**. Integrated a Web Audio API synthesizer for White Noise, Pink Noise, and Binaural Beats.
-*   **Feature**: **Mission Refinement**. Added ability to "Edit" active missions. Users can provide new context, and AI will regenerate the remaining tasks without deleting completed ones.
+*   **特性**: **紧急按钮 (Panic Button)**。在执行模式中添加了 SOS 按钮。如果用户卡住，AI 会介入并将当前任务拆解为微步骤。
+*   **特性**: **音频引擎 (Audio Engine)**。集成了 Web Audio API 合成器，支持白噪音、粉红噪音和双耳节拍。
+*   **特性**: **任务精炼 (Mission Refinement)**。添加了“编辑/调整”任务的功能。用户可以提供新的上下文，AI 会在保留已完成任务的基础上重新生成剩余计划。
 
 ### v1.4.0
-*   **Feature**: **Localization**. Added full support for Chinese, Japanese, and Korean.
-*   **UI**: Added `ProfileModal` to view detailed psychological analysis after the initial assessment.
+*   **特性**: **本地化 (Localization)**。全面支持简体中文、日语和韩语。
+*   **UI**: 添加了 `ProfileModal`，允许用户在初始评估后随时查看详细的心理侧写报告。
 
 ### v1.3.0
-*   **Feature**: **Data Portability**. Added `Import/Export` buttons for full system backup (JSON).
-*   **Feature**: **Single Mission Import**. Added ability to share/import individual mission files.
-*   **UX**: Added "Global Save" shortcut (`Ctrl+S`).
+*   **特性**: **数据便携性**。添加了系统级的 `导入/导出` 按钮（JSON格式）。
+*   **特性**: **单任务导入**。支持分享或导入单个任务文件。
+*   **体验**: 添加了“全局保存”快捷键 (`Ctrl+S`)。
 
 ### v1.2.0
-*   **Feature**: **Execution Logic**. Implemented the focus timer, task completion logic, and "Mission Complete" celebration screen.
-*   **UX**: Added "Psychological Override" strategy display in the task list.
+*   **特性**: **执行逻辑**。实现了专注计时器、任务完成逻辑和“任务圆满完成”的庆祝结算画面。
+*   **体验**: 在任务列表中显示 AI 推荐的“心理学覆盖策略”。
 
 ### v1.1.0
-*   **Backend**: Integrated Google Gemini API.
-*   **Feature**: Implemented the 30-question assessment logic and prompt engineering for psychological profiling.
+*   **后端**: 集成 Google Gemini API。
+*   **特性**: 实现了 30 题心理评估逻辑和针对心理侧写的 Prompt 工程。
 
 ### v1.0.0
-*   Initial Release.
-*   Basic Project CRUD (Create, Read, Update, Delete).
-*   Cyberpunk UI implementation.
+*   初始版本发布。
+*   基础的项目 CRUD (增删改查)。
+*   赛博朋克 UI 实现。
